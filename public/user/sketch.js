@@ -101,13 +101,13 @@ window.addEventListener("load", () => {
   }
 
   function addColor1 () {
-    if(soundtriggered = true) {
+    if(soundtriggered1 = true) {
     chatBox.style.outlineColor = "#00ff73";
     }
   }
 
   function addColor2 () {
-    if(soundtriggered = true) {
+    if(soundtriggered2 = true) {
     chatBox.style.outlineColor = "#00eeff";
     }
   }
@@ -121,7 +121,6 @@ window.addEventListener("load", () => {
       soundtriggered2 = false;
       selectedAnimal = animals[0];
       changeColor();
-      changeCanvas();
     } else if (e.target.value == "treehopper") {
       soundtriggered1 = true;
       soundtriggered = false;
@@ -156,9 +155,6 @@ window.addEventListener("load", () => {
     };
     socket.emit("msg", msgObj);
     clear();
-  addColor();
-  addColor1();
-  addColor2();
   });
 
   socket.on("msgObj", (data) => {
