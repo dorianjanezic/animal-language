@@ -4,6 +4,7 @@ let modSocket = io("/mod");
 
 socket.on("connect", () => {
   console.log("connected");
+  
 });
 
 modSocket.on("connect", () => {
@@ -18,6 +19,11 @@ let animals = ["bat", "treehopper", "walrus"];
 let animalOption, selectedAnimal;
 let serverLetters;
 let soundtriggered, soundtriggered1, soundtriggered2;
+let queue1 = []
+let src1;
+let selectedAnimal1, serverLetters1;
+
+
 
 let p5Letters = [];
 let numberLetters = []; // queue of audio messages
@@ -32,15 +38,21 @@ let nameInput = document.getElementById("input-name");
 let msgInput = document.getElementById("input-chat");
 let sendButton = document.getElementById("send-name");
 let curName, curMsg, letterGroup;
+let canvas0 = document.getElementById("chat-canvas")
+let textInput = document.getElementById("chat-box-msgs")
+
+
 
 //the chat box element ID
 let chatBox = document.getElementById("chat-box-msgs");
+let textMessages = document.getElementsByTagName("P");
 
 //variables for the Instructions window
 let modal = document.getElementById("info-modal");
 let infoButton = document.getElementById("info-button");
 //span that closes the window
 let span = document.getElementsByClassName("close")[0];
+
 
 window.addEventListener("load", () => {
   // animal dropdown
@@ -56,6 +68,51 @@ window.addEventListener("load", () => {
   }
   dropdown.selectedIndex = 0;
 
+
+  //changing color accordingly to dropdown selection
+  function changeColor () {
+    if(soundtriggered = true) {
+    chatBox.style.color = "#7b00ff";
+    let canvascolor = document.getElementsByTagName("CANVAS")[0];
+    canvascolor.style.outlineColor = "#7b00ff";
+    }
+  }
+
+  function changeColor1 () {
+    if(soundtriggered1 = true) {
+    chatBox.style.color = "#00ff73";
+    let canvascolor = document.getElementsByTagName("CANVAS")[0];
+    canvascolor.style.outlineColor = "#00ff73";
+    }
+  }
+
+  function changeColor2 () {
+    if(soundtriggered2 = true) {
+    chatBox.style.color = "#00eeff";
+    let canvascolor = document.getElementsByTagName("CANVAS")[0];
+    canvascolor.style.outlineColor = "#00eeff";
+    }
+  }
+
+  function addColor () {
+    if(soundtriggered = true) {
+    chatBox.style.outlineColor = "#7b00ff";
+    }
+  }
+
+  function addColor1 () {
+    if(soundtriggered = true) {
+    chatBox.style.outlineColor = "#00ff73";
+    }
+  }
+
+  function addColor2 () {
+    if(soundtriggered = true) {
+    chatBox.style.outlineColor = "#00eeff";
+    }
+  }
+
+  
   //change of dropdown
   dropdown.addEventListener("change", function (e) {
     if (e.target.value == "bat") {
@@ -63,21 +120,30 @@ window.addEventListener("load", () => {
       soundtriggered1 = false;
       soundtriggered2 = false;
       selectedAnimal = animals[0];
+      changeColor();
+      changeCanvas();
     } else if (e.target.value == "treehopper") {
       soundtriggered1 = true;
       soundtriggered = false;
       soundtriggered2 = false;
       selectedAnimal = animals[1];
+      changeColor1();
     } else if (e.target.value == "walrus") {
       soundtriggered2 = true;
       soundtriggered = false;
       soundtriggered1 = false;
       selectedAnimal = animals[2];
+      changeColor2();
     }
+    
   });
+  function clear(){
+    document.getElementById('input-chat').value = ''
+}
 
   letterGroup = "";
   sendButton.addEventListener("click", () => {
+   
     letterGroup = msgInput.value.match(/\b(\w)/g);
     console.log(letterGroup);
     curMsg = msgInput.value;
@@ -89,6 +155,10 @@ window.addEventListener("load", () => {
       animal: selectedAnimal,
     };
     socket.emit("msg", msgObj);
+    clear();
+  addColor();
+  addColor1();
+  addColor2();
   });
 
   socket.on("msgObj", (data) => {
@@ -100,6 +170,41 @@ window.addEventListener("load", () => {
     chatBox.appendChild(msgEl);
     chatBox.scrollTop = chatBox.scrollHeight;
   });
+
+
+  //tried to added another button to listen to your message
+
+  // socket.on("msgObj1", (data)=> {
+   
+  //   let selectedAnimal1 = data.animal;
+  //   let serverLetters1 = data.letters;
+
+  //   for (let i = 0; i < serverLetters1.length; i++) {
+  //     if (selectedAnimal1 == "bat") {
+  //       queue1.push(batMusic[serverLetters1[i]]);
+  //     }
+
+  //     if (selectedAnimal1 == "treehopper") {
+  //       queue1.push(treehopperMusic[serverLetters1[i]]);
+  //     }
+
+  //     if (selectedAnimal1 == "walrus") {
+  //       queue1.push(walrusMusic[serverLetters1[i]]);
+  //     }
+  //   }
+
+  //   //after queue array is created, playThis will load the audio files from src
+  //   for (let i = 0; i < queue1.length; i++) {
+  //     src1 = queue1[i].url;
+  //     playThis1[i] = loadSound(src1, soundSuccess, soundError, soundWaiting);
+  //   }
+  //   src1 = "";
+  //   queue1 = [];
+  // })
+//   yourButton = document.getElementById("your-button");
+// yourButton.addEventListener("click", () => {
+//   setUpQueue();
+// })
 
   //listening for the letters from the server and converting them right away?
   socket.on("letterSounds", (data) => {
@@ -257,6 +362,7 @@ let yposition = 200;
 let speed = 0.01;
 let antiGravity = 0.01;
 let firstAn = false;
+8
 
 function draw() {
   background(0);

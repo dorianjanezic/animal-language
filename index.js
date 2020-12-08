@@ -77,6 +77,7 @@ user.on("connection", (socket) => {
     // console.log(msgObj);
     user.emit("msgObj", msgObj);
     socket.broadcast.emit("letterSounds", letterSounds);
+  
     // console.log(p5letters1);
     p5letters1 = [];
     numberLetters1 = [];
