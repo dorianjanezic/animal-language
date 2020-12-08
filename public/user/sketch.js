@@ -84,13 +84,13 @@ window.addEventListener("load", () => {
 
   function changeColor1 () {
     if(soundtriggered1 = true) {
-    chatBox.style.color = "AEFF2B";
+    chatBox.style.color = "#aeff2c"
     let canvascolor = document.getElementsByTagName("CANVAS")[0];
-    canvascolor.style.outlineColor = "AEFF2B";
+    canvascolor.style.outlineColor = "#aeff2c"
     let drpdwncolor = document.getElementById("select-animal")
-    drpdwncolor.style.backgroundColor ="AEFF2B"
+    drpdwncolor.style.backgroundColor ="#aeff2c"
     let hearbtn = document.getElementById("hear-button")
-    hearbtn.style.backgroundColor = "AEFF2B"
+    hearbtn.style.backgroundColor = "#aeff2c"
     }
   }
 
