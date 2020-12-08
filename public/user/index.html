@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <title>animal communication</title>
+  </head>
+  <body>
+    <audio id="messageAudio" src=""></audio>
+    <div class="buttons">
+      <button id="hear-button" class="button hear-button">Hear Messages</button>
+    </div>
+    <div class="select">
+      <div id="animal-dropdown">
+        <select id="select-animal" class="dropdown">
+          select animal
+        </select>
+      </div>
+      <div class="input">
+        <input
+          type="text"
+          id="input-name"
+          class="input uname"
+          placeholder="username"
+        />
+        <input
+          type="text"
+          id="input-chat"
+          class="input umessage"
+          placeholder="message"
+        />
+        <button id="send-name" class="send-name">send</button>
+      </div>
+    </div>
+    <div id="chat-canvas">
+      <div class="sub-container chat-feed">
+        <div id="chat-box-msgs" class="chat"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"></script>
+    <script src="sketch.js"></script>
+  </body>
+</html>
