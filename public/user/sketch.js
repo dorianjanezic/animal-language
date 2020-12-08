@@ -75,14 +75,22 @@ window.addEventListener("load", () => {
     chatBox.style.color = "#7b00ff";
     let canvascolor = document.getElementsByTagName("CANVAS")[0];
     canvascolor.style.outlineColor = "#7b00ff";
+    let drpdwncolor = document.getElementById("select-animal")
+    drpdwncolor.style.backgroundColor = "#7b00ff"
+    let hearbtn = document.getElementById("hear-button")
+    hearbtn.style.backgroundColor = "#7b00ff"
     }
   }
 
   function changeColor1 () {
     if(soundtriggered1 = true) {
-    chatBox.style.color = "#00ff73";
+    chatBox.style.color = "AEFF2B";
     let canvascolor = document.getElementsByTagName("CANVAS")[0];
-    canvascolor.style.outlineColor = "#00ff73";
+    canvascolor.style.outlineColor = "AEFF2B";
+    let drpdwncolor = document.getElementById("select-animal")
+    drpdwncolor.style.backgroundColor ="AEFF2B"
+    let hearbtn = document.getElementById("hear-button")
+    hearbtn.style.backgroundColor = "AEFF2B"
     }
   }
 
@@ -91,26 +99,14 @@ window.addEventListener("load", () => {
     chatBox.style.color = "#00eeff";
     let canvascolor = document.getElementsByTagName("CANVAS")[0];
     canvascolor.style.outlineColor = "#00eeff";
+    let drpdwncolor = document.getElementById("select-animal")
+    drpdwncolor.style.backgroundColor = "#00eeff"
+    let hearbtn = document.getElementById("hear-button")
+    hearbtn.style.backgroundColor = "#00eeff"
     }
   }
 
-  function addColor () {
-    if(soundtriggered = true) {
-    chatBox.style.outlineColor = "#7b00ff";
-    }
-  }
-
-  function addColor1 () {
-    if(soundtriggered1 = true) {
-    chatBox.style.outlineColor = "#00ff73";
-    }
-  }
-
-  function addColor2 () {
-    if(soundtriggered2 = true) {
-    chatBox.style.outlineColor = "#00eeff";
-    }
-  }
+  
 
   
   //change of dropdown
